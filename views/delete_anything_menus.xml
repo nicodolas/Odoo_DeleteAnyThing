@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Action Window để mở Wizard popup -->
+    <record id="action_delete_anything_wizard" model="ir.actions.act_window">
+        <field name="name">Delete Anything</field>
+        <field name="res_model">delete.anything.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_delete_anything_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menuitem đặt trong Technical -> Database Structure -->
+    <menuitem id="menu_delete_anything_wizard"
+              name="Delete Anything"
+              action="action_delete_anything_wizard"
+              parent="base.menu_custom"
+              sequence="999"
+              groups="base.group_system"/>
+
+</odoo>

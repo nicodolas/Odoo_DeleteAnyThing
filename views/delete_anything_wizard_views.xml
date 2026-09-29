@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_delete_anything_wizard_form" model="ir.ui.view">
+        <field name="name">delete.anything.wizard.form</field>
+        <field name="model">delete.anything.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Delete Anything Tool">
+                <div class="alert alert-danger mb-3" role="alert">
+                    <i class="fa fa-exclamation-triangle me-2" title="Warning" role="img" aria-label="Warning"/>
+                    <strong>WARNING:</strong> This tool performs direct and permanent data deletion. Force Mode bypasses all ORM constraints and foreign keys. This action <strong>CANNOT</strong> be undone!
+                </div>
+                <group>
+                    <group string="Target Selection">
+                        <field name="model_id" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="table_name"/>
+                        <field name="target_type" widget="radio"/>
+                        <field name="record_ids_input"
+                               invisible="target_type != 'record'"
+                               required="target_type == 'record'"
+                               placeholder="e.g. 12, 15, 88"/>
+                    </group>
+                    <group string="Execution Mode">
+                        <field name="mode" widget="radio"/>
+                        <field name="restart_identity"
+                               invisible="target_type != 'table' or mode != 'force'"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_execute_delete"
+                            string="Execute Delete"
+                            type="object"
+                            class="btn-danger"
+                            confirm="Are you sure you want to permanently delete this data? This action CANNOT be undone!"/>
+                    <button string="Cancel"
+                            class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

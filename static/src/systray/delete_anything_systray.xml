@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="delete_anything.Systray">
+        <div class="o_delete_anything_systray d-flex align-items-center">
+            <button class="btn btn-link py-0 px-2 text-danger"
+                    type="button"
+                    title="Delete Anything (Ctrl+D)"
+                    aria-label="Delete Anything"
+                    t-on-click="() => this.openWizard()">
+                <i class="fa fa-trash fs-5" role="img"/>
+            </button>
+        </div>
+    </t>
+</templates>
